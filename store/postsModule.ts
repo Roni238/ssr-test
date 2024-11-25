@@ -60,8 +60,8 @@ export const mutations: MutationTree<State> = {
 
 export const actions: ActionTree<State, any> = {
   async loadPost(store){
-    const mosPosts = await PostService.loadPosts('/api/mos')
-    const lentaPosts = await PostService.loadPosts('/api/lenta')
-    store.commit('setPosts', [...mosPosts,...lentaPosts])
+    // const mosPosts = await PostService.loadPosts('/api/mos')
+    // const lentaPosts = await PostService.loadPosts('/api/lenta')
+    // store.commit('setPosts', [...mosPosts,...lentaPosts])
   }
 }
