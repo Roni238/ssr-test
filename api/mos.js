@@ -5,6 +5,8 @@ export default function handler(req, res) {
   const proxy = createProxyMiddleware({
     target: 'https://www.mos.ru/rss',
     changeOrigin: true,
+    timeout: 60000, // 20 секунд
+    proxyTimeout: 60000, // 20 секунд
     pathRewrite: { '^/api/mos': '' },
   });
 
