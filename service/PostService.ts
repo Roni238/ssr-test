@@ -1,5 +1,4 @@
-
-//import axios from 'axios';
+import axios from 'axios';
 import xml2js from 'xml2js';
 
 export default class PostService {
@@ -7,15 +6,14 @@ export default class PostService {
     try {
       // Запросы направляются на Vercel API
       const response = await fetch(url);
-      const xmlData = await response.text();
+      console.log(response)
+      // const xmlData = await response.text();
 
-      if (!/^<\?xml|^<rss/.test(xmlData.trim())) {
-        throw new Error('Invalid XML response');
-      }
-      console.log(xmlData)
+
+
       return new Promise<object[]>((resolve, reject) => {
         // Парсинг XML в JSON
-        xml2js.parseString(xmlData, (err: any, result: any) => {
+        xml2js.parseString(response, (err: any, result: any) => {
           if (err) {
             console.error('Error parsing XML:', err);
             reject(err);

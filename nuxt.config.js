@@ -2,11 +2,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 export default {
   ssr: true,
-  target: 'static',
+  target: 'server',
 
   server: {
     host: 'localhost',
-    port: 80,
+    port: 3000,
   },
   generate: {
     fallback: 'index.html'
