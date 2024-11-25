@@ -1,16 +1,17 @@
 
-import axios from 'axios';
+//import axios from 'axios';
 import xml2js from 'xml2js';
 
 export default class PostService {
   static async loadPosts(url: string): Promise<object[]> {
     try {
       // Запросы направляются на Vercel API
-      const response = await axios.get(url);
+      const response = await fetch(url);
+      const xmlData = await response.text();
 
       return new Promise<object[]>((resolve, reject) => {
         // Парсинг XML в JSON
-        xml2js.parseString(response.data, (err: any, result: any) => {
+        xml2js.parseString(xmlData, (err: any, result: any) => {
           if (err) {
             console.error('Error parsing XML:', err);
             reject(err);
@@ -33,5 +34,3 @@ export default class PostService {
     }
   }
 }
-
-
