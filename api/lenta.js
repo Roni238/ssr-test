@@ -8,6 +8,7 @@ module.exports = (req, res) => {
       '^/api/lenta': '',
     },
   });
+  console.log('запрос')
   return proxy(req, res, (err) => {
     if (err) {
       console.error('Proxy error:', err);
