@@ -5,7 +5,7 @@ export default class PostService {
     try {
       const response = await fetch(url);
       const xmlData = await response.text(); // Получаем текст из ответа
-      console.log(xmlData)
+      console.log(response)
       return new Promise<object[]>((resolve, reject) => {
         // Парсинг XML в JSON
         xml2js.parseString(xmlData, (err: any, result: any) => {
