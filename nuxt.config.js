@@ -12,6 +12,10 @@ export default {
     fallback: 'index.html'
   },
 
+
+
+
+
   head: {
     title: 'news-feed',
     htmlAttrs: {
