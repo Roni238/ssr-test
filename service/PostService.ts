@@ -9,6 +9,10 @@ export default class PostService {
       const response = await fetch(url);
       const xmlData = await response.text();
 
+      if (!/^<\?xml|^<rss/.test(xmlData.trim())) {
+        throw new Error('Invalid XML response');
+      }
+      console.log(xmlData)
       return new Promise<object[]>((resolve, reject) => {
         // Парсинг XML в JSON
         xml2js.parseString(xmlData, (err: any, result: any) => {
