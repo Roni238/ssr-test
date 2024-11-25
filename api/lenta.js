@@ -4,9 +4,9 @@ module.exports = (req, res) => {
   const proxy = createProxyMiddleware({
     target: 'https://lenta.ru/rss/news',
     changeOrigin: true,
-    pathRewrite: {
-      '^/api/lenta': '',
-    },
+    timeout: 20000, // 20 секунд
+    proxyTimeout: 20000, // 20 секунд
+    pathRewrite: { '^/api/lenta': '' },
   });
   console.log('запрос')
   return proxy(req, res, (err) => {

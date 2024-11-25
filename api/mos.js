@@ -4,9 +4,9 @@ module.exports = (req, res) => {
   const proxy = createProxyMiddleware({
     target: 'https://www.mos.ru/rss',
     changeOrigin: true,
-    pathRewrite: {
-      '^/api/mos': '',
-    },
+    timeout: 20000, // 20 секунд
+    proxyTimeout: 20000, // 20 секунд
+    pathRewrite: { '^/api/mos': '' },
   });
   return proxy(req, res, (err) => {
     if (err) {
